@@ -1,6 +1,8 @@
 import discord
 import random
 from discord.ext import commands
+
+
 import os
 
 intents = discord.Intents.default()  # تفعيل الأذونات الأساسية
