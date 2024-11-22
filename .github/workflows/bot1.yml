@@ -26,6 +26,6 @@ jobs:
 
       - name: Run bot
         env:
-          DISCORD_TOKEN: ${{ secrets.discord_token_1 }}  # إدخال التوكن كسر
+           MY_DISCORD_TOKEN: ${{ secrets.MY_DISCORD_TOKEN }}  # إدخال التوكن كسر
         run: |
           python bot1.py 
