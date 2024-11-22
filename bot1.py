@@ -122,7 +122,7 @@ async def on_message(message):
 
 
 token = os.getenv("MY_DISCORD_TOKEN")
-bot = discord.Client()
+bot = discord.Client(intents=intents)
 
 
 
