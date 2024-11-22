@@ -2,6 +2,9 @@ import discord
 import random
 from discord.ext import commands
 
+
+import os
+
 # intents = discord.Intents.default()  
 # bot = commands.Bot(command_prefix="!", intents=intents)
 
@@ -25,7 +28,7 @@ bot = commands.Bot(command_prefix="", case_sensitive=True, intents=intents)
 @bot.event
 #عند تشغيل البوت 
 async def on_ready():
-    print(f"login is sacsses {bot.user}")
+    print(f"login is success {bot.user}")
 
 @bot.event
 async def on_member_join(member):
@@ -118,4 +121,10 @@ async def on_message(message):
     await bot.process_commands(message)
 
 
+token = os.getenv("MY_DISCORD_TOKEN")
+client = discord.Client()
+
+
+
+bot.run(token)
 
