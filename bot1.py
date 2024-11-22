@@ -39,15 +39,11 @@ async def on_member_remove(member):
     channel = discord.utils.get(member.guild.text_channels, name="general")
 
     if channel:
-        # إرسال رسالة ترحيبية
+        # إرسال رسالة عند مغادرة العضو
         await channel.send(f"{member} has left the server")
     else:
-        print("القناة لم تُعثر عليها.")
+        print(f"{member} has left the server")
 
-
-@bot.event
-async def on_member_remove(member):
-    print(f"{member} has left the server")
 
 
 # أمر بسيط يرد على المستخدم
