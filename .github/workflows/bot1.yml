@@ -1,0 +1,31 @@
+name: Run Discord Bot
+
+on:
+  push:
+    branches:
+      - main  # يشغل العمل عند الدفع إلى فرع "main"
+  workflow_dispatch:  # يسمح بتشغيل العمل يدويًا من GitHub Actions
+
+jobs:
+  run-bot:
+    runs-on: ubuntu-latest  # نظام التشغيل المستخدم
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3  # يسحب الكود من المستودع
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'  # إصدار Python المستخدم
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt  # تثبيت المكتبات من requirements.txt
+
+      - name: Run bot
+        env:
+          DISCORD_TOKEN: ${{ secrets.DISCORD_TOKEN }}  # إدخال التوكن كسر
+        run: |
+          python pr1.py  # استبدل باسم ملف البوت الخاص بك
