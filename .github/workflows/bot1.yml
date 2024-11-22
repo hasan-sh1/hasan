@@ -26,6 +26,6 @@ jobs:
 
       - name: Run bot
         env:
-          DISCORD_TOKEN: ${{ secrets.DISCORD_TOKEN }}  # إدخال التوكن كسر
+          DISCORD_TOKEN: ${{ secrets.discord_token_1 }}  # إدخال التوكن كسر
         run: |
-          python pr1.py  # استبدل باسم ملف البوت الخاص بك
+          python bot1.py 
