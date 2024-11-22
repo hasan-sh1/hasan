@@ -120,7 +120,7 @@ async def on_message(message):
     # مهم للسماح للأوامر بالعمل
     await bot.process_commands(message)
 
-
+token = os.getenv("DISCORD_TOKEN_1")
 
 
 
