@@ -121,8 +121,6 @@ async def on_message(message):
     await bot.process_commands(message)
 
 
-token = os.getenv("MY_DISCORD_TOKEN")
-bot = discord.Client(intents=intents)
 
 
 
