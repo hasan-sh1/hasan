@@ -110,9 +110,7 @@ async def hi(ctx):
 async def بوت(ctx):
     await ctx.reply("🙂خير")
     
-@bot.command()
-async def بوت(ctx):
-    await ctx.reply("🙂خير")
+
 
 @bot.command()
 async def ping(ctx):
