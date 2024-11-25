@@ -23,7 +23,9 @@ async def on_ready():
 @bot.event
 async def on_member_join(member):
     # الحصول على القناة الافتراضية أو قناة الترحيب
-    channel = member.guild.system_channel
+    # channel = member.guild.system_channel
+    channel = discord.utils.get(member.guild.text_channels, name="welcome")
+
     if channel:
         # قائمة رسائل الترحيب
         responses = ["welcome 🤩", "نورت الكروب 🎉", "💕هلا بيك"]
