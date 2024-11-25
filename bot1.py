@@ -218,6 +218,8 @@ async def on_message(message):
             await message.reply(f"{developer.mention} هو المطور الخاص بنا!")
         else:
             await message.reply("لا يمكن العثور على المطور في هذا السيرفر.")
+            # مهم للسماح للأوامر بالعمل
+    await bot.process_commands(message)
     
 # الردود العشوائية
 def get_random_response(responses):
@@ -228,8 +230,7 @@ def get_random_response(responses):
 
 
 
-    # مهم للسماح للأوامر بالعمل
-    await bot.process_commands(message)
+    
 
 
 # التعامل مع CommandNotFound لمنع ظهور الأخطاء
