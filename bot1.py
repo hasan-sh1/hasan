@@ -52,7 +52,7 @@ async def on_member_join(member):
 لدعم كلان [M1]: {support_channel.mention if support_channel else "رابط قناة الدعم غير متوفر"}
 معًا، نحن أقوى 💪 دعونا نثبت أن M1 دائمًا في القمة 😎
 """
-    await channel.send(welcome_message_ar, file=discord.File(r"C:/Users/LENOVO/Desktop/m1.gif"))
+    await channel.send(welcome_message_ar, file=discord.File(r".github/workflows/m1.gif"))
 # رسالة الترحيب باللغة الإنجليزية
     # الحصول على القنوات بالـ ID
 
@@ -79,7 +79,7 @@ Together, we are stronger 💪 Let's prove that M1 is always at the top 😎
 
 # إرسال الرسالتين مع صورة متحركة لكل واحدة
     
-    await channel.send(welcome_message_en, file=discord.File(r"C:/Users/LENOVO/Desktop/m1.gif"))
+    await channel.send(welcome_message_en, file=discord.File(r".github/workflows/m1.gif"))
 
 
 
