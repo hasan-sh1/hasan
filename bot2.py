@@ -27,7 +27,7 @@ azkar = [
 
 # المتغيرات
 current_index = 0
-channel_id = 1308862251091886192  
+channel_id = None
 interval = 1  
 is_active = True  
 
