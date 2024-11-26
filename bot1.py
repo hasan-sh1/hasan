@@ -12,7 +12,7 @@ intents.members = True
 # تعيين البوت
 bot = commands.Bot(command_prefix="", case_sensitive=True, intents=intents)
 
-
+bot = discord.Bot(intents=intents, reconnect=True)
 
 
 @bot.event
@@ -223,6 +223,18 @@ async def on_message(message):
 def get_random_response(responses):
     return random.choice(responses)
 
+@bot.event
+async def on_error(event, *args, **kwargs):
+    with open("error.log", "a") as f:
+        f.write(f"Error in {event}: {args}, {kwargs}\n")
+
+@bot.event
+async def on_disconnect():
+    print("Disconnected from Discord.")
+
+@bot.event
+async def on_resumed():
+    print("Successfully resumed the session.")
 
 
 
