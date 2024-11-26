@@ -26,6 +26,6 @@ jobs:
 
       - name: Run bot
         env:
-           DISCORD_TOKEN_1: ${{ secrets.DISCORD_TOKEN_2 }}  # إدخال التوكن كسر
+           DISCORD_TOKEN_2: ${{ secrets.DISCORD_TOKEN_2 }}  # إدخال التوكن كسر
         run: |
           python bot2.py 
