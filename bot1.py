@@ -12,7 +12,7 @@ intents.members = True
 # تعيين البوت
 bot = commands.Bot(command_prefix="", case_sensitive=True, intents=intents)
 
-bot = discord.Bot(intents=intents, reconnect=True)
+bot = discord.bot(intents=intents, reconnect=True)
 
 
 @bot.event
