@@ -2,6 +2,10 @@ import discord
 from discord.ext import commands, tasks
 import asyncio
 import os
+import logging
+
+# إعداد مستوى تسجيل الأخطاء
+logging.basicConfig(level=logging.INFO)
 
 # إعداد البوت
 intents = discord.Intents.default()
@@ -32,22 +36,29 @@ interval = 1
 is_active = True  
 
 # مهمة الأذكار
-@tasks.loop(seconds=interval * 60)  # تحويل الدقائق إلى ثواني
+@tasks.loop(seconds=interval * 60)
 async def send_azkar():
     global current_index, channel_id
     if not is_active or channel_id is None:
         return
-    channel = bot.get_channel(channel_id)
-    if channel:
-        await channel.send(azkar[current_index], allowed_mentions=discord.AllowedMentions.none())
-        current_index = (current_index + 1) % len(azkar)  # التكرار عبر الأذكار
+    try:
+        channel = bot.get_channel(channel_id)
+        if channel:
+            await channel.send(azkar[current_index], allowed_mentions=discord.AllowedMentions.none())
+            current_index = (current_index + 1) % len(azkar)
+    except Exception as e:
+        print(f"Error in send_azkar: {e}")
 
-# تشغيل المهمة عند جاهزية البوت
+
 @bot.event
 async def on_ready():
-    print(f'Logged in as {bot.user}')
-    if channel_id:
-        send_azkar.start()  # بدء تشغيل المهمة إذا تم تحديد القناة
+    try:
+        print(f'Logged in as {bot.user}')
+        if channel_id:
+            send_azkar.start()
+    except Exception as e:
+        print(f"Error in on_ready: {e}")
+
 
 # أمر لتحديد القناة التي سترسل فيها الأذكار
 @bot.command()
