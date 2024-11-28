@@ -62,7 +62,7 @@ async def send_azkar():
         print(f"Error in send_azkar: {e}")
 
 # مهمة التذكيرات المخصصة
-@tasks.loop(seconds=50)
+@tasks.loop(seconds=40)
 async def send_scheduled_messages():
     if not is_active or channel_id is None:
         return
