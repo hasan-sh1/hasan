@@ -23,7 +23,7 @@ jobs:
       - name: Install dependencies
         run: |
           pip install -r requirements.txt
-
+          pip install pytz
       - name: Run bot
         env:
            DISCORD_TOKEN_2: ${{ secrets.DISCORD_TOKEN_2 }}  # إدخال التوكن كسر
