@@ -4,6 +4,7 @@ import asyncio
 import os
 import logging
 from datetime import datetime
+import pytz
 
 # إعداد مستوى تسجيل الأخطاء
 logging.basicConfig(level=logging.INFO)
@@ -18,6 +19,8 @@ bot = commands.Bot(command_prefix="", intents=intents)
 
 # قائمة الأذكار
 azkar = [
+       "سبحان الله وبحمده، سبحان الله العظيم",
+       "اللهم صلِّ وسلم على نبينا محمد",
     "سبحان الله \n الحمد لله \n لا اله إلا الله \n الله أكبر",  
     "لا إله إلا الله وحده لا شريك له، له الملك وله الحمد وهو على كل شيء قدير",
     "اللهم صلِّ وسلم على نبينا محمد",
@@ -28,7 +31,7 @@ azkar = [
     "سبحانك اللهم وبحمدك",
     "فَصَبرٌ جَميْلٌ",
     "اللهم صلِّ وسلم على نبينا محمد",
-    "سبحان الله وبحمده، سبحان الله العظيم",
+ 
 ]
 
 # تذكيرات مخصصة بأوقات محددة
@@ -67,15 +70,19 @@ async def send_scheduled_messages():
     if not is_active or channel_id is None:
         return
 
-    now = datetime.now()
-    current_time = (now.hour, now.minute)  # الحصول على الوقت الحالي كساعتين ودقيقتين
-    if current_time in scheduled_messages:  # التحقق من وجود الوقت الحالي في التذكيرات
-        try:
+    try:
+        timezone = pytz.timezone('Asia/Riyadh')  # ضبط المنطقة الزمنية
+        now = datetime.now(timezone)
+        current_time = (now.hour, now.minute)  # الحصول على الوقت الحالي كساعتين ودقيقتين
+
+        print(f"Current server time: {now}, Current time key: {current_time}")
+        
+        if current_time in scheduled_messages:  # التحقق من وجود الوقت الحالي في التذكيرات
             channel = bot.get_channel(channel_id)
             if channel:
                 await channel.send(scheduled_messages[current_time], allowed_mentions=discord.AllowedMentions.none())
-        except Exception as e:
-            print(f"Error in send_scheduled_messages: {e}")
+    except Exception as e:
+        print(f"Error in send_scheduled_messages: {e}")
 
 
 @bot.event
