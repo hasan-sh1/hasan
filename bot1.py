@@ -348,7 +348,7 @@ async def warnss(ctx, member: discord.Member):
 
 
 # قائمة الأدوار المتاحة
-available_roles = ["member", "friends", "clan[M1]", "owner"]
+available_roles = ["Member", "Friends", "CLAN [M1]", "OWNER"]
 
 # دالة لإضافة دور للعضو
 @bot.command()
